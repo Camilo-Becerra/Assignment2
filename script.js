@@ -11,4 +11,11 @@ function initMap() {
         map: map,
         title: "Biblioteca Virgilio Barco"
     });
+    const infoWindow1 = new google.maps.InfoWindow({
+        content: "<h5>Biblioteca Virgilio Barco</h5><p>Av. Carrera 60 #57-60</p>"
+    });
+    
+    marker1.addListener("click", function() {
+        infoWindow1.open(map, marker1);
+    });
 }
