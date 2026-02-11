@@ -39,4 +39,28 @@ function initMap() {
         marker.category = lib.category;
         markers.push(marker);
     });
+    const buttons = [
+        { id: "publicBtn", category: "public" },
+        { id: "universityBtn", category: "university" },
+        { id: "childrenBtn", category: "children" },
+        { id: "allBtn", category: "all" }
+    ];
+    
+    buttons.forEach(function(btn) {
+        document.getElementById(btn.id).addEventListener("click", function() {
+            filterMarkers(btn.category);
+        });
+    });
+}
+
+function filterMarkers(category) {
+    markers.forEach(function(marker) {
+        if (category === "all") {
+            marker.setVisible(true);
+        } else if (marker.category === category) {
+            marker.setVisible(true);
+        } else {
+            marker.setVisible(false);
+        }
+    });
 }
