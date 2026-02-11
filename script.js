@@ -64,3 +64,50 @@ function filterMarkers(category) {
         }
     });
 }
+
+const geoBtn = document.getElementById("geoBtn");
+
+let userMarker = null; 
+
+geoBtn.addEventListener("click", function () {
+
+  if (navigator.geolocation) {
+
+    navigator.geolocation.getCurrentPosition(
+      function(position) {
+
+        const lat = position.coords.latitude;
+        const lng = position.coords.longitude;
+
+        const userLocation = { lat: lat, lng: lng };
+
+        // Remove previous user marker if it exists
+        if (userMarker) {
+          userMarker.setMap(null);
+        }
+
+        // Create new marker
+        userMarker = new google.maps.Marker({
+          position: userLocation,
+          map: map,
+          title: "Your Location",
+          icon: {
+            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+          }
+        });
+
+        // Center map on user
+        map.setCenter(userLocation);
+        map.setZoom(14);
+
+      },
+      function(error) {
+        alert("Unable to retrieve your location.");
+      }
+    );
+
+  } else {
+    alert("Geolocation is not supported by this browser.");
+  }
+
+});
