@@ -5,4 +5,8 @@ function initMap() {
         zoom: 12,
         center: bogota
     });
-}
+const marker1 = new google.maps.Marker({
+        position: library1,
+        map: map,
+        title: "Biblioteca Virgilio Barco"
+    });}
