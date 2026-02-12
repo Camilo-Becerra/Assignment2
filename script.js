@@ -51,25 +51,9 @@ function initMap() {
             filterMarkers(btn.category);
         });
     });
-}
 
-function filterMarkers(category) {
-    markers.forEach(function(marker) {
-        if (category === "all") {
-            marker.setVisible(true);
-        } else if (marker.category === category) {
-            marker.setVisible(true);
-        } else {
-            marker.setVisible(false);
-        }
-    });
-}
-
-const geoBtn = document.getElementById("geoBtn");
-
-let userMarker = null; 
-
-geoBtn.addEventListener("click", function () {
+    let userMarker = null;
+    geoBtn.addEventListener("click", function () {
 
   if (navigator.geolocation) {
 
@@ -92,7 +76,7 @@ geoBtn.addEventListener("click", function () {
           map: map,
           title: "Your Location",
           icon: {
-            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png"
+            url: "https://maps.google.com/mapfiles/ms/icons/blue-dot.png"
           }
         });
 
@@ -109,5 +93,21 @@ geoBtn.addEventListener("click", function () {
   } else {
     alert("Geolocation is not supported by this browser.");
   }
-
 });
+}
+
+function filterMarkers(category) {
+    markers.forEach(function(marker) {
+        if (category === "all") {
+            marker.setVisible(true);
+        } else if (marker.category === category) {
+            marker.setVisible(true);
+        } else {
+            marker.setVisible(false);
+        }
+    });
+}
+
+const geoBtn = document.getElementById("geoBtn");
+
+let userMarker = null; 
