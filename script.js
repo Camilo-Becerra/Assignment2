@@ -94,6 +94,9 @@ function initMap() {
     alert("Geolocation is not supported by this browser.");
   }
 });
+
+const geoBtn = document.getElementById("geoBtn");
+
 document.getElementById("addLibraryBtn").addEventListener("click", function() {
         const name = document.getElementById("libraryName").value;
         const address = document.getElementById("libraryAddress").value;
@@ -149,4 +152,53 @@ function filterMarkers(category) {
     });
 }
 
-const geoBtn = document.getElementById("geoBtn");
+    const originSelect = document.getElementById("originSelect");
+    const destinationSelect = document.getElementById("destinationSelect");
+    
+    libraries.forEach(function(lib) {
+        const originOption = document.createElement("option");
+        originOption.value = lib.lat + "," + lib.lng;
+        originOption.text = lib.name;
+        originSelect.appendChild(originOption);
+        
+        const destOption = document.createElement("option");
+        destOption.value = lib.lat + "," + lib.lng;
+        destOption.text = lib.name;
+        destinationSelect.appendChild(destOption);
+    });
+    
+    const directionsService = new google.maps.DirectionsService();
+    const directionsRenderer = new google.maps.DirectionsRenderer();
+    directionsRenderer.setMap(map);
+    
+    document.getElementById("directionsBtn").addEventListener("click", function() {
+        const origin = originSelect.value;
+        const destination = destinationSelect.value;
+        
+        if (!origin || !destination) {
+            alert("Please select both origin and destination");
+            return;
+        }
+        
+        const originCoords = origin.split(",");
+        const originLocation = { lat: parseFloat(originCoords[0]), lng: parseFloat(originCoords[1]) };
+        
+        const destCoords = destination.split(",");
+        const destLocation = { lat: parseFloat(destCoords[0]), lng: parseFloat(destCoords[1]) };
+        
+        const request = {
+            origin: originLocation,
+            destination: destLocation,
+            travelMode: "DRIVING"
+        };
+        
+        directionsService.route(request, function(result, status) {
+            if (status === "OK") {
+                directionsRenderer.setDirections(result);
+            } else {
+                alert("Directions request failed");
+            }
+        });
+    });
+
+
