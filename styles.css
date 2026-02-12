@@ -1,4 +1,37 @@
 #map {
     height: 500px;
-    width: 100%;
+    width: 80%;
+}
+
+@media (max-width: 576px) {
+    #map {
+        height: 300px;
+        margin: 15px 0;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+        margin: 15px 10px;
+    }
+    
+    h4 {
+        font-size: 1.2rem;
+        margin: 15px 10px;
+    }
+    
+    .container, .container-fluid {
+        padding: 0 15px;
+    }
+    
+    .row {
+        margin: 10px 0;
+    }
+    
+    button {
+        margin: 5px 0;
+    }
+    
+    input, select {
+        margin: 5px 0;
+    }
 }

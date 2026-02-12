@@ -19,13 +19,23 @@
         <h1 class="text-center mt-3">Bogotá Public Libraries</h1>
 
         <div class="text-center my-3">
-            <button id="publicBtn" class="btn btn-success mx-1">Public</button>
-            <button id="universityBtn" class="btn btn-success mx-1">University</button>
-            <button id="childrenBtn" class="btn btn-success mx-1">Children</button>
-            <button id="allBtn" class="btn btn-success mx-1">All</button>
+            <div class="row justify-content-center">
+                <div class="col-6 col-md-auto mb-2">
+                    <button id="publicBtn" class="btn btn-primary w-100">Public</button>
+                </div>
+                <div class="col-6 col-md-auto mb-2">
+                    <button id="universityBtn" class="btn btn-success w-100">University</button>
+                </div>
+                <div class="col-6 col-md-auto mb-2">
+                    <button id="childrenBtn" class="btn btn-warning w-100">Children</button>
+                </div>
+                <div class="col-6 col-md-auto mb-2">
+                    <button id="allBtn" class="btn btn-secondary w-100">All</button>
+                </div>
+            </div>
         </div>
         <div id="map"></div>
-
+        <!-- Geolocation Button -->
         <div class="container mt-3 mb-3">
             <div class="d-flex justify-content-center">
                 <button id="geoBtn" class="btn btn-success px-4">
@@ -35,49 +45,53 @@
         </div>
     </div>
 
+     <!--Add new library-->
     <div class="container my-3">
-    <h4>Add a New Library</h4>
-    <div class="row">
-        <div class="col-md-3">
-            <input type="text" id="libraryName" class="form-control" placeholder="Library Name">
+       
+        <h4>Add a New Library</h4>
+        <div class="row">
+            <div class="col-md-3">
+                <input type="text" id="libraryName" class="form-control" placeholder="Library Name">
+            </div>
+            <div class="col-md-3">
+                <input type="text" id="libraryAddress" class="form-control" placeholder="Address">
+            </div>
+            <div class="col-md-2">
+                <select id="libraryCategory" class="form-select">
+                    <option value="public">Public</option>
+                    <option value="university">University</option>
+                    <option value="children">Children</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <button id="addLibraryBtn" class="btn btn-success">Add Library</button>
+            </div>
         </div>
-        <div class="col-md-3">
-            <input type="text" id="libraryAddress" class="form-control" placeholder="Address">
-        </div>
-        <div class="col-md-2">
-            <select id="libraryCategory" class="form-select">
-                <option value="public">Public</option>
-                <option value="university">University</option>
-                <option value="children">Children</option>
-            </select>
-        </div>
-        <div class="col-md-2">
-            <button id="addLibraryBtn" class="btn btn-success">Add Library</button>
-        </div>
-    </div>
 
-   <div class="container my-3">
-    <h4>Get Directions</h4>
-    <div class="row">
-        <div class="col-md-3">
-            <select id="originSelect" class="form-select">
-                <option value="">From: </option>
-            </select>
-        </div>
-        <div class="col-md-3">
-            <select id="destinationSelect" class="form-select">
-                <option value="">To: </option>
-            </select>
-        </div>
+        <!-- Directions Section -->
         
-        <div class="col-md-2">
-            <button id="directionsBtn" class="btn btn-info">Get Directions</button>
-        </div>
     </div>
-</div>
-</div>
+    <div class="container my-3">
+            <h4>Get Directions</h4>
+            <div class="row">
+                <div class="col-md-3">
+                    <select id="originSelect" class="form-select">
+                        <option value="">From: </option>
+                    </select>
+                </div>
+                <div class="col-md-3">
+                    <select id="destinationSelect" class="form-select">
+                        <option value="">To: </option>
+                    </select>
+                </div>
 
-<div id="map"></div>
+                <div class="col-md-2">
+                    <button id="directionsBtn" class="btn btn-info">Get Directions</button>
+                </div>
+            </div>
+        </div>
+
+    <
 
 
 
