@@ -94,6 +94,47 @@ function initMap() {
     alert("Geolocation is not supported by this browser.");
   }
 });
+document.getElementById("addLibraryBtn").addEventListener("click", function() {
+        const name = document.getElementById("libraryName").value;
+        const address = document.getElementById("libraryAddress").value;
+        const category = document.getElementById("libraryCategory").value;
+        
+        if (!name || !address) {
+            alert("Please fill in all fields");
+            return;
+        }
+        
+        const geocoder = new google.maps.Geocoder();
+        geocoder.geocode({ address: address }, function(results, status) {
+            if (status === "OK") {
+                const location = results[0].geometry.location;
+                
+                const marker = new google.maps.Marker({
+                    position: location,
+                    map: map,
+                    title: name
+                });
+                
+                const infoWindow = new google.maps.InfoWindow({
+                    content: "<h5>" + name + "</h5><p>" + address + "</p>"
+                });
+                
+                marker.addListener("click", function() {
+                    infoWindow.open(map, marker);
+                });
+                
+                marker.category = category;
+                markers.push(marker);
+                
+                map.setCenter(location);
+                
+                document.getElementById("libraryName").value = "";
+                document.getElementById("libraryAddress").value = "";
+            } else {
+                alert("Address not found");
+            }
+        });
+    });
 }
 
 function filterMarkers(category) {
@@ -109,5 +150,3 @@ function filterMarkers(category) {
 }
 
 const geoBtn = document.getElementById("geoBtn");
-
-let userMarker = null; 
