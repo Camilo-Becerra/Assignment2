@@ -138,20 +138,6 @@ document.getElementById("addLibraryBtn").addEventListener("click", function() {
             }
         });
     });
-}
-
-function filterMarkers(category) {
-    markers.forEach(function(marker) {
-        if (category === "all") {
-            marker.setVisible(true);
-        } else if (marker.category === category) {
-            marker.setVisible(true);
-        } else {
-            marker.setVisible(false);
-        }
-    });
-}
-
     const originSelect = document.getElementById("originSelect");
     const destinationSelect = document.getElementById("destinationSelect");
     
@@ -200,5 +186,20 @@ function filterMarkers(category) {
             }
         });
     });
+}
+
+function filterMarkers(category) {
+    markers.forEach(function(marker) {
+        if (category === "all") {
+            marker.setVisible(true);
+        } else if (marker.category === category) {
+            marker.setVisible(true);
+        } else {
+            marker.setVisible(false);
+        }
+    });
+}
+
+    
 
 
